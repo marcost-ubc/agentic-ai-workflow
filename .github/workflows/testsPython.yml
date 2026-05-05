@@ -73,7 +73,7 @@ jobs:
       - name: Notify on test results
         run: |
           if [ "${{ needs.python-unit-tests.result }}" == "success" ]; then
-            echo "success notifications go here"
+            echo "${{github.event.workflow_run.name}}:${{github.event.workflow_run.id}} was successful!."
           else
-            echo "failure notifications go here"
+            echo "${{github.event.workflow_run.name}}:${{github.event.workflow_run.id}} failed. Please check the logs for details."
           fi
